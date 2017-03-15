@@ -47,7 +47,7 @@ services:
     depends_on:
       - elasticsearch
 
-#networks:
-#
-#  elk:
-#    driver: bridge
+networks:
+
+  bridge:
+    driver: bridge
