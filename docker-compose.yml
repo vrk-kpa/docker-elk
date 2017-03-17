@@ -18,6 +18,7 @@ services:
       xpack.graph.enabled: "false"
       xpack.watcher.enabled: "false"
     network_mode: "bridge"
+    restart: always
 
   logstash:
     container_name: elk_logstash
@@ -32,6 +33,7 @@ services:
     network_mode: "bridge"
     depends_on:
       - elasticsearch
+    restart: always  
 
   kibana:
     container_name: elk_kibana
@@ -43,6 +45,7 @@ services:
     network_mode: "bridge"
     depends_on:
       - elasticsearch
+    restart: always  
 
 #networks:
 #  elk:
