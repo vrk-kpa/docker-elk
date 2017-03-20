@@ -17,7 +17,6 @@ services:
       xpack.monitoring.enabled: "false"
       xpack.graph.enabled: "false"
       xpack.watcher.enabled: "false"
-    network_mode: "bridge"
     restart: always
 
   logstash:
@@ -30,7 +29,6 @@ services:
       - "127.0.0.1:5000:5000"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    network_mode: "bridge"
     depends_on:
       - elasticsearch
     restart: always  
@@ -42,11 +40,11 @@ services:
       - ./kibana/config/:/usr/share/kibana/config
     ports:
       - "127.0.0.1:5601:5601"
-    network_mode: "bridge"
     depends_on:
       - elasticsearch
     restart: always  
 
-#networks:
-#  elk:
-#   driver: bridge
+networks:
+  default:
+    external:
+      name: sema
